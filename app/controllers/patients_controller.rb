@@ -22,19 +22,15 @@ class PatientsController < ApplicationController
   def edit
   end
 
-  # POST /patients
-  # POST /patients.json
   def create
-    @patient = Patient.new(name: params[:first_name], description: params[:last_name])
-    @patient.save
-    # @patients =  Patient.import(params[:file])
-    # respond_to do |format|
-    #   if @patients
-    #     format.html { redirect_to '/', notice: 'Patient was successfully imported.' }
-    #   else
-    #     format.html { render :index }
-    #   end
-    # end
+    @patients = Patient.create(name: params[:patient][:name])
+    respond_to do |format|
+      if @patients
+        format.html { redirect_to '/', notice: 'Patient was successfully imported.' }
+      else
+        # format.html { render :index }
+      end
+    end
   end
 
   # PATCH/PUT /patients/1

@@ -6,8 +6,6 @@ export const patientService = {
     getAll,
     create
 };
-
-
 function getAll() {
     const requestOptions = {
         method: 'GET',
@@ -16,7 +14,6 @@ function getAll() {
 
     return fetch(`${BASE_URL}patients.json`, requestOptions).then(handleResponse);
 }
-
 function create(patient) {
   const requestOptions = {
     method: 'POST',
@@ -25,8 +22,6 @@ function create(patient) {
   };
   return fetch(`${BASE_URL}patients.json`, requestOptions).then(handleResponse);
 }
-
-
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
