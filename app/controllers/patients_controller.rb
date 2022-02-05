@@ -23,7 +23,7 @@ class PatientsController < ApplicationController
   end
 
   def create
-    @patients = Patient.create(name: params[:patient][:name])
+    @patients = Patient.create(name: params[:patient][:name], number: params[:patient][:number], description: params[:patient][:description])
     respond_to do |format|
       if @patients
         format.html { redirect_to '/', notice: 'Patient was successfully imported.' }

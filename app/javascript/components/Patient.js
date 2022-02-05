@@ -33,7 +33,6 @@ class Patient extends React.Component {
               <tr>
                  <th>ID</th>
                  <th onClick={e => this.onSort(e, 'name')}>Name</th>
-                 <th onClick={e => this.onSort(e, 'date')}>Date</th>
                  <th onClick={e => this.onSort(e, 'number')}>Number</th>
                  <th >Description</th>
               </tr>
@@ -46,8 +45,7 @@ class Patient extends React.Component {
                 index={index}
                 id={patient.id}
                 name={patient.name}
-                date={patient.date}
-                num={patient.number}
+                number={patient.number}
                 description={patient.description}
               />
              ))}
@@ -66,7 +64,6 @@ class Patient extends React.Component {
               <tr>
                  <th>ID</th>
                  <th onClick={e => this.onSort(e, 'name')}>Name</th>
-                 <th onClick={e => this.onSort(e, 'date')}>Date</th>
                  <th onClick={e => this.onSort(e, 'number')}>Number</th>
                  <th >Description</th>
               </tr>
@@ -78,8 +75,7 @@ class Patient extends React.Component {
                 index={index}
                 id={patient.id}
                 name={patient.name}
-                date={patient.date}
-                num={patient.number}
+                number={patient.number}
                 description={patient.description}
               />
              ))}           

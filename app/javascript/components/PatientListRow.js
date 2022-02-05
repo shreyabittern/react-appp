@@ -13,7 +13,7 @@ class PatientListRow extends React.Component {
         <td>{this.props.id}</td>
         <td>{this.props.name}</td>
         <td>{this.props.date}</td>
-        <td>{this.props.num}</td>
+        <td>{this.props.number}</td>
         <td>{this.props.description}</td>
       </tr>
     );
@@ -24,7 +24,7 @@ PatientListRow.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   date: PropTypes.string,
-  num: PropTypes.number,
+  number: PropTypes.number,
   description: PropTypes.string,
 
 };
