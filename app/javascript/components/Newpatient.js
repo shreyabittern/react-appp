@@ -15,6 +15,7 @@ class Newpatient extends React.Component {
       patient: {
         first_name: '',
         last_name: '',
+        number: '',
         loaded: 0
       },
       submitted: false
@@ -61,14 +62,21 @@ class Newpatient extends React.Component {
             name="first_name"
             placeholder="First Name"
             value={patient.first_name} onChange={this.handleChange}  autoFocus
-          />
+          /><br/>
           <Label for="lname">Last name:</Label>
           <Input
             type="text"
             name="last_name"
             placeholder="Last Name"
             value={patient.last_name} onChange={this.handleChange}  autoFocus
-          />
+          /><br/>
+          <Label for="lnumber">Number :</Label>
+          <Input
+            type="integer"
+            name="number"
+            placeholder="number"
+            value={patient.number} onChange={this.handleChange}  autoFocus
+          /><br/>
           <Button type="submit" >Submit</Button>
         </Form> 
       </div>

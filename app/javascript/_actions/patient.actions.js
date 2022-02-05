@@ -19,6 +19,7 @@ function getAll() {
             .then(
                 patients => {
                     dispatch(success(patients))
+                    // history.push('/patients');
                 },
                 error => dispatch(failure(error.toString()))
             );
