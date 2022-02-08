@@ -1,18 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
-import PatientListRow from './PatientListRow';
+import PatientShowRow from './PatientShowRow';
 import { connect } from 'react-redux';
 import { patientActions } from '_actions';
+import queryString from 'query-string'
+import { useParams } from "react-router-dom"
 
-class Patient extends React.Component {
+class Patientshow extends React.Component {
 	constructor(props) {
     super(props); 
     this.state = { data: [] };
     this.onSort = this.onSort.bind(this)  
 	}
 
-  componentWillMount() {
-     this.props.getPatients();
+  componentDidMount(prevProps) {
+   this.props.getPatientshow(window.location.pathname.split("/")[2]);
   }
 
   onSort(event, sortKey){
@@ -35,16 +37,12 @@ class Patient extends React.Component {
                  <th onClick={e => this.onSort(e, 'name')}>Name</th>
                  <th onClick={e => this.onSort(e, 'number')}>Number</th>
                  <th >Description</th>
-                 <th >Link</th>
-                 <th >Edit</th>
-                 <th >Delete</th>
-
               </tr>
            </thead>
            <tbody data-test="table-body">    
 
              {this.state.data && this.state.data.map((patient, index) => (
-              <PatientListRow
+              <PatientShowRow
                 key={index}
                 index={index}
                 id={patient.id}
@@ -70,13 +68,11 @@ class Patient extends React.Component {
                  <th onClick={e => this.onSort(e, 'name')}>Name</th>
                  <th onClick={e => this.onSort(e, 'number')}>Number</th>
                  <th >Description</th>
-                 <th >Link</th>
-                 <th >Edit</th>
               </tr>
            </thead>
            <tbody data-test="table-body">
            {patients && patients.map((patient, index) => (
-              <PatientListRow
+              <PatientShowRow
                 key={index}
                 index={index}
                 id={patient.id}
@@ -96,16 +92,17 @@ class Patient extends React.Component {
   }
 }
 
-Patient.propTypes = {
+Patientshow.propTypes = {
   patients: PropTypes.array
 };
 function mapState(state) {
-    const { patients } = state.patients;
-    return { patients };
+
+    const { patients, patient_id } = state.patients;
+    return { patients, patient_id };
 }
 
 const actionCreators = {
-    getPatients: patientActions.getAll,
+    getPatientshow: patientActions.show,
 }
 
-export default connect(mapState, actionCreators)(Patient);
+export default connect(mapState, actionCreators)(Patientshow);

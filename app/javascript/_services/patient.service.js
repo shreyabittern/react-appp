@@ -4,7 +4,9 @@ import AuthHeader from '../_helpers/auth-header'
 
 export const patientService = {
     getAll,
-    create
+    create,
+    show,
+    delete_data
 };
 function getAll() {
     const requestOptions = {
@@ -36,4 +38,20 @@ function handleResponse(response) {
         }
         return data;
     });
+}
+
+function show(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: AuthHeader.simpleHeader()
+    };
+    return fetch(`${BASE_URL}patients/${id}.json`, requestOptions).then(handleResponse);
+}
+
+function delete_data(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: AuthHeader.simpleHeader()
+    };
+    return fetch(`${BASE_URL}patients/${id}.json`, requestOptions).then(handleResponse);
 }

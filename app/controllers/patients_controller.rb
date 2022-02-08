@@ -11,6 +11,8 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+    # @patient = Patient.find(params[:id])
+    @patients = Patient.where(id: params[:id])
   end
 
   # GET /patients/new
@@ -20,6 +22,7 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
+   
   end
 
   def create
@@ -51,10 +54,11 @@ class PatientsController < ApplicationController
   # DELETE /patients/1.json
   def destroy
     @patient.destroy
-    respond_to do |format|
-      format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @patients = Patient.all
+    # respond_to do |format|
+    #   format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

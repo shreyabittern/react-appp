@@ -19,6 +19,5 @@ ActiveRecord::Schema.define(version: 2022_02_05_070003) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "number"
   end
-   
 
 end

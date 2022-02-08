@@ -6,7 +6,9 @@ import { history } from '../_helpers';
 
 export const patientActions = {    
     getAll,
-    create
+    create,
+    show,
+    delete_data
 };
 
 
@@ -54,3 +56,43 @@ function create(patient) {
   function success(patient) { return { type: newpatientConstants.GETALL_SUCCESS, patient } }
   function failure(error) { return { type: newpatientConstants.GETALL_FAILURE, error } }
 }
+
+function show(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        patientService.show(id)
+            .then(
+                patients => {
+                    dispatch(success(patients))
+                    // history.push('/patients');
+                },
+                error => dispatch(failure(error.toString()))
+            );
+    };
+
+    function request() { return { type: patientConstants.GETALL_REQUEST } }
+    function success(patients) { return { type: patientConstants.GETALL_SUCCESS, patients } }
+    function failure(error) { return { type: patientConstants.GETALL_FAILURE, error } }
+}
+
+function delete_data(id) {
+    debugger
+    return dispatch => {
+        dispatch(request(id));
+
+        patientService.delete_data(id)
+            .then(
+                patients => {
+                    dispatch(success(patients))
+                    // history.push('/patients');
+                },
+                error => dispatch(failure(error.toString()))
+            );
+    };
+
+    function request() { return { type: patientConstants.GETALL_REQUEST } }
+    function success(patients) { return { type: patientConstants.GETALL_SUCCESS, patients } }
+    function failure(error) { return { type: patientConstants.GETALL_FAILURE, error } }
+}
+
